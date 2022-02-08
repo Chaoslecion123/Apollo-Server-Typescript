@@ -1,3 +1,4 @@
+import User from "../models/User";
 import { v4 as uuid } from "uuid";
 import Quote from "../models/Quote";
 // Provide resolver functions for your schema fields
@@ -15,6 +16,14 @@ Mutation: {
     deleteQuote: async (parent: any, ctx: any) => {
         const q = await Quote.destroy({ where: { id: ctx.id } });
         return { ok: q };
+    },
+    addUser: async (parent:any, ctx:any) => {
+        const id = uuid();
+        const q  = await User.create({id,lastName: ctx.lastName});
+        return {
+            id: q.getDataValue("id"),
+            lastName: q.getDataValue("lastName")
+        }
     }
 },
 Query: {

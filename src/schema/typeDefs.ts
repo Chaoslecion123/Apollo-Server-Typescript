@@ -10,11 +10,16 @@ export const typeDefs = gql`
         addQuote(phrase: String!, quotee: String): Quote
         editQuote(id: ID!, phrase: String, quotee: String): Quote
         deleteQuote(id: ID!): DeleteResponse
+        addUser(lastName: String):User
     }
     type DeleteResponse {
         ok: Boolean!
     }
     type Query {
         quotes: [Quote]
+    },
+    type User {
+        id: ID!,
+        lastName: String!  
     }
 `;

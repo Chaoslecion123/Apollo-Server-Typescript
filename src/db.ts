@@ -1,7 +1,10 @@
 import { Sequelize } from "sequelize";
 // change to your URI
 const sequelize = new 
-Sequelize("mysql://root:Newyesterday123.@localhost:3306/my_store")
+Sequelize("mysql://root:Newyesterday123.@localhost:3306/my_store", {
+    dialect: 'mysql',
+    logging: true
+})
 //Sequelize("postgres://postgres:12345@localhost:5432/todo");
 const connect = () => {
     try {

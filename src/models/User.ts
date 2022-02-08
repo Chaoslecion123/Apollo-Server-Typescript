@@ -2,16 +2,18 @@ import { Model, DataTypes, Sequelize } from "sequelize";
 import { sequelize } from "../db";
 
 
-export default class Quote extends Model {}
-Quote.init(
+export default class User extends Model {}
+User.init(
 {
     id: {
         type: DataTypes.UUIDV4,
         primaryKey: true,
         autoIncrement: true
     },
-    phrase: DataTypes.STRING,
-    quotee: DataTypes.STRING,
+    lastName: {
+        type:DataTypes.STRING,
+        field: 'last_name'
+    },
     createAt: {
         allowNull: false,
         type: DataTypes.DATE,
@@ -19,5 +21,5 @@ Quote.init(
         defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
     }
 },
-{   sequelize, modelName: "quote" }
+{   sequelize, modelName: "user" }
 );
